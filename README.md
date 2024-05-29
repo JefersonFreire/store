@@ -2,40 +2,32 @@
 
 ```mermaid
 classDiagram
-    class User {
-        +string name
-        +string dateOfBirth
-        +string cpf
-        +Address address
-        +string email
-        +string phone
-        +Purchase[] purchase
+    class Pessoa {
+        +int id
+        +String nome
+        +String cpf
+        +String telefone
+        +String email
+        +Endereco endereco
+        +Produto produto
     }
 
-    class Address {
-        +string road
-        +int number
-        +string neighborhood
-        +string city
-        +string state
-        +string cep
+    class Endereco {
+        +String cep
+        +String logradouro
+        +String localidade
+        +String bairro
+        +String uf
     }
 
-    class Product {
-        +long code
-        +string name
-        +string brand
-        +string description
-        +int amount
-        +BigDecimal price
+    class Produto {
+        +int codigo
+        +double preco
+        +String nome
+        +int quantidade
     }
 
-    class Purchase {
-        +Date datePurchase
-        +Product[] product
-    }
+    Pessoa "1" *-- "1" Endereco
+    Pessoa "1" *-- "1" Produto
 
-    User "1" -- "1" Address : has
-    User "1" -- "0..*" Purchase : makes
-    Purchase "1" -- "1..*" Product : includes
 ```
